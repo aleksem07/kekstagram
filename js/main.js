@@ -1,9 +1,5 @@
-import {
-  message,
-  nameCommentator,
-  surnameCommentator,
-  descriptionPhotoAuthor,
-} from './user-data.js';
+import { message, nameCommentator, surnameCommentator } from './user-data.js';
+import { descriptionPhotoAuthor } from './user-data.js';
 
 // случайное целое число
 const getRandomNumber = (min, max) => {
@@ -31,21 +27,20 @@ checksStringLength('Строка', 140);
 
 // объект заполнение фото
 
-let fillingPhoto = {
-  id: getRandomNumber(1, 25), // должны быть уникальны
-  url: `img/photos/${getRandomNumber(1, 25)}.jpg`, // должны быть уникальны
-  description: 'описание придумать',
-  likes: getRandomNumber(15, 200),
-  comments: {
-    id: getRandomNumber(1, 1000), // должны быть уникальны
-    // avatar: `img/avatar-${getRandomNumber(1, 6)}.jpg`,
-    message: message[getRandomNumber(0, message.length - 1)],
-    name: `${nameCommentator[getRandomNumber(0, nameCommentator.length - 1)]} ${
-      surnameCommentator[getRandomNumber(0, surnameCommentator.length - 1)]
-    }`,
-  },
-  //'массив обектов',
-};
+// let fillingPhoto = {
+//   id: getRandomNumber(1, 25), // должны быть уникальны
+//   url: `img/photos/${getRandomNumber(1, 25)}.jpg`, // должны быть уникальны
+//   description: 'описание придумать',
+//   likes: getRandomNumber(15, 200),
+//   comments: {
+//     id: getRandomNumber(1, 1000), // должны быть уникальны
+//     // avatar: `img/avatar-${getRandomNumber(1, 6)}.jpg`,
+//     message: message[getRandomNumber(0, message.length - 1)],
+//     name: `${nameCommentator[getRandomNumber(0, nameCommentator.length - 1)]} ${
+//       surnameCommentator[getRandomNumber(0, surnameCommentator.length - 1)]
+//     }`,
+//   },
+// };
 
 const PHOTO_COUNT = 25;
 
@@ -54,10 +49,10 @@ const LIKES = {
   MAX: 200,
 };
 
-const ID_COMMENT = {
-  MIN: 0,
-  MAX: 1000,
-};
+// const ID_COMMENT = {
+//   MIN: 0,
+//   MAX: 1000,
+// };
 
 const ID_AVATAR = {
   MIN: 1,
@@ -72,21 +67,12 @@ const COMMENT_COUNT = {
 let comments = () => {
   let comment = [];
 
-  for (
-    let i = 0;
-    i < getRandomNumber(COMMENT_COUNT.MIN, COMMENT_COUNT.MAX);
-    i++
-  ) {
+  for (let i = 0; i < getRandomNumber(COMMENT_COUNT.MIN, COMMENT_COUNT.MAX); i++) {
     comment.push({
       id: i + 1, // добавить имя фото
-      avatar: `'img/avatar-${getRandomNumber(
-        ID_AVATAR.MIN,
-        ID_AVATAR.MAX
-      )}.jpg'`,
+      avatar: `'img/avatar-${getRandomNumber(ID_AVATAR.MIN, ID_AVATAR.MAX)}.jpg'`,
       message: getRandomNumberArray(message),
-      name: `${getRandomNumberArray(nameCommentator)} ${getRandomNumberArray(
-        surnameCommentator
-      )}`,
+      name: getRandomNumberArray(nameCommentator) + ' ' + getRandomNumberArray(surnameCommentator),
     });
   }
   return comment;
@@ -107,7 +93,7 @@ let photoDescription = () => {
 
   return photos;
 };
-
-console.log(fillingPhoto);
-console.log(fillingPhoto.comments);
-console.log(photoDescription());
+photoDescription();
+// console.log(fillingPhoto);
+// console.log(fillingPhoto.comments);
+// console.log(photoDescription());
