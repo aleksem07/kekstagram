@@ -1,3 +1,5 @@
+import { getRandomNumber, getRandomNumberArray } from './util.js';
+
 let message = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё. Не всё. Всё!',
@@ -5,14 +7,13 @@ let message = [
   'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
   'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
   'Как можно было поймать такой неудачный момент?!',
-  'Мои работы хороши, в отличие от ваших.',
+  'Посмотрите мои работы, может научитесь фотографировать.',
   'Опять это?? Сколько можно?!',
   'Просто я высказываю свое мнение, а оно, внезапно, кому-то не нравится.',
   'Посмотрите, кто это у нас тут такой ранимый?',
   'И вот когда говоришь вам, что вы - дураки, вы считаете себя белыми и пушистыми, а меня - токсичным.',
   'Зачем это здесь?',
 ];
-export { message };
 
 let nameCommentator = [
   'Лаврентий',
@@ -30,7 +31,6 @@ let nameCommentator = [
   'Карина',
   'Ребека',
 ];
-export { nameCommentator };
 
 let surnameCommentator = [
   'Мамацашвили',
@@ -46,7 +46,6 @@ let surnameCommentator = [
   'Джутхани',
   'Уайт',
 ];
-export { surnameCommentator };
 
 let descriptionPhotoAuthor = [
   'Классная фотка получилась, делюсь с вами',
@@ -61,4 +60,52 @@ let descriptionPhotoAuthor = [
   'Энни Лейбовиц подвинься, я новый Король!',
   'Зацени кадр на пленку',
 ];
-export { descriptionPhotoAuthor };
+
+const ID_AVATAR = {
+  MIN: 1,
+  MAX: 6,
+};
+
+const COMMENT_COUNT = {
+  MIN: 1,
+  MAX: 3,
+};
+
+let comments = () => {
+  let comment = [];
+
+  for (let i = 0; i < getRandomNumber(COMMENT_COUNT.MIN, COMMENT_COUNT.MAX); i++) {
+    comment.push({
+      id: i + 1, // добавить имя фото, должно быть уникальным
+      avatar: `'img/avatar-${getRandomNumber(ID_AVATAR.MIN, ID_AVATAR.MAX)}.jpg'`,
+      message: getRandomNumberArray(message),
+      name: `${getRandomNumberArray(nameCommentator)} ${getRandomNumberArray(surnameCommentator)}`,
+    });
+  }
+
+  return comment;
+};
+
+const PHOTO_COUNT = 25;
+
+const LIKES = {
+  MIN: 0,
+  MAX: 200,
+};
+
+let photos = [];
+
+let photoDescription = () => {
+  for (let i = 0; i < PHOTO_COUNT; i++) {
+    photos.push({
+      id: i,
+      url: `'img/photos/${i + 1}.jpg'`,
+      description: getRandomNumberArray(descriptionPhotoAuthor),
+      likes: getRandomNumber(LIKES.MIN, LIKES.MAX),
+      comments: comments(),
+    });
+  }
+};
+photoDescription();
+
+export { photos };
