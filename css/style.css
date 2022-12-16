@@ -189,9 +189,8 @@ main {
   display: -ms-grid;
   display: grid;
   grid-gap: 10px;
-
   -ms-grid-columns: (1fr)[7];
-      grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, 1fr);
 }
 
 .picture {
@@ -328,6 +327,8 @@ main {
   font-size: 0;
 
   background-image: url("../img/upload-button-bg.png");
+  background: linear-gradient(#f15a5a, #9ba3ff);
+  border-radius: 35%;
   background-repeat: no-repeat;
   background-position: center;
 

@@ -15,6 +15,25 @@ const getRandomNumber = (min, max) => {
 const getRandomNumberArray = (array) => {
   return array[getRandomNumber(0, array.length - 1)];
 };
+
+// уникальное случайное целое число
+const makeUniqueRandomIntegerGenerator = (min, max) => {
+  const previousValues = [];
+
+  return () => {
+    let currentValue = getRandomNumber(min, max);
+    if (previousValues.length >= max - min + 1) {
+      throw new Error('Перебраны все числа из диапазона от ' + min + ' до ' + max);
+    }
+    while (previousValues.includes(currentValue)) {
+      currentValue = getRandomNumber(min, max);
+    }
+    previousValues.push(currentValue);
+
+    return currentValue;
+  };
+};
+
 //проверка длины строки
 
 const checksStringLength = (string, maxLenght) => {
@@ -23,4 +42,4 @@ const checksStringLength = (string, maxLenght) => {
 
 checksStringLength('Строка', 140);
 
-export { getRandomNumber, getRandomNumberArray };
+export { getRandomNumber, getRandomNumberArray, makeUniqueRandomIntegerGenerator };

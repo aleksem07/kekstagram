@@ -1,4 +1,4 @@
-import { getRandomNumber, getRandomNumberArray } from './util.js';
+import { getRandomNumber, getRandomNumberArray, makeUniqueRandomIntegerGenerator } from './util.js';
 
 let message = [
   'Всё отлично!',
@@ -66,6 +66,13 @@ const ID_AVATAR = {
   MAX: 6,
 };
 
+const ID_COMMENT = {
+  MIN: 1,
+  MAX: 100,
+};
+
+const getUniqueRaindomNumb = makeUniqueRandomIntegerGenerator(ID_COMMENT.MIN, ID_COMMENT.MAX);
+
 const COMMENT_COUNT = {
   MIN: 1,
   MAX: 3,
@@ -76,7 +83,7 @@ let comments = () => {
 
   for (let i = 0; i < getRandomNumber(COMMENT_COUNT.MIN, COMMENT_COUNT.MAX); i++) {
     comment.push({
-      id: i + 1, // добавить имя фото, должно быть уникальным
+      id: getUniqueRaindomNumb(),
       avatar: `'img/avatar-${getRandomNumber(ID_AVATAR.MIN, ID_AVATAR.MAX)}.jpg'`,
       message: getRandomNumberArray(message),
       name: `${getRandomNumberArray(nameCommentator)} ${getRandomNumberArray(surnameCommentator)}`,
