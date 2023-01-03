@@ -1,3 +1,3 @@
-import { photos } from './user-data.js';
+import { addPicture } from './pictures.js';
 
-photos;
+addPicture();

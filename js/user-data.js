@@ -71,7 +71,7 @@ const ID_COMMENT = {
   MAX: 100,
 };
 
-const getUniqueRaindomNumb = makeUniqueRandomIntegerGenerator(ID_COMMENT.MIN, ID_COMMENT.MAX);
+const getUniqueRandomNumb = makeUniqueRandomIntegerGenerator(ID_COMMENT.MIN, ID_COMMENT.MAX);
 
 const COMMENT_COUNT = {
   MIN: 1,
@@ -83,7 +83,7 @@ let comments = () => {
 
   for (let i = 0; i < getRandomNumber(COMMENT_COUNT.MIN, COMMENT_COUNT.MAX); i++) {
     comment.push({
-      id: getUniqueRaindomNumb(),
+      id: getUniqueRandomNumb(),
       avatar: `'img/avatar-${getRandomNumber(ID_AVATAR.MIN, ID_AVATAR.MAX)}.jpg'`,
       message: getRandomNumberArray(message),
       name: `${getRandomNumberArray(nameCommentator)} ${getRandomNumberArray(surnameCommentator)}`,
@@ -106,7 +106,7 @@ let photoDescription = () => {
   for (let i = 0; i < PHOTO_COUNT; i++) {
     photos.push({
       id: i,
-      url: `'img/photos/${i + 1}.jpg'`,
+      url: `img/photos/${i + 1}.jpg`,
       description: getRandomNumberArray(descriptionPhotoAuthor),
       likes: getRandomNumber(LIKES.MIN, LIKES.MAX),
       comments: comments(),
