@@ -210,6 +210,7 @@
 
             <!-- Комментарии к изображению -->
             <div class="social__comment-count">5 из <span class="comments-count">125</span> комментариев</div>
+
             <ul class="social__comments">
               <li class="social__comment">
                 <img
@@ -288,6 +289,14 @@
       </div>
     </footer>
 
+    <!-- Шаблон случайного комментария -->
+    <template id="social__comment">
+      <li class="social__comment">
+        <img class="social__picture" src="{{аватар}}" alt="{{имя комментатора}}" width="35" height="35" />
+        <p class="social__text">{{текст комментария}}</p>
+      </li>
+    </template>
+
     <!-- Шаблон изображения случайного пользователя -->
     <template id="picture">
       <a href="#" class="picture">
@@ -325,5 +334,6 @@
     </template>
 
     <script src="./js/main.js" type="module"></script>
+    <script src="./js/full-picture.js" type="module"></script>
   </body>
 </html>

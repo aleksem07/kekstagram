@@ -19,8 +19,11 @@ const addPicture = function (item) {
 const getUniqueRaindomNumb = makeUniqueRandomIntegerGenerator(0, photos.length - 1);
 
 const displayedPhotoCount = 12;
-for (let i = 0; i < displayedPhotoCount; i++) {
-  addPicture(photos[getUniqueRaindomNumb()]);
-}
 
-export { addPicture };
+const showPreview = function () {
+  for (let i = 0; i < displayedPhotoCount; i++) {
+    addPicture(photos[getUniqueRaindomNumb()]);
+  }
+};
+
+export { showPreview };

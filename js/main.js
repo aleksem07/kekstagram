@@ -1,3 +1,3 @@
-import { addPicture } from './pictures.js';
+import { showPreview } from './pictures.js';
 
-addPicture();
+showPreview();
