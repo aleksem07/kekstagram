@@ -84,7 +84,7 @@ let comments = () => {
   for (let i = 0; i < getRandomNumber(COMMENT_COUNT.MIN, COMMENT_COUNT.MAX); i++) {
     comment.push({
       id: getUniqueRandomNumb(),
-      avatar: `'img/avatar-${getRandomNumber(ID_AVATAR.MIN, ID_AVATAR.MAX)}.jpg'`,
+      avatar: `img/avatar-${getRandomNumber(ID_AVATAR.MIN, ID_AVATAR.MAX)}.svg`,
       message: getRandomNumberArray(message),
       name: `${getRandomNumberArray(nameCommentator)} ${getRandomNumberArray(surnameCommentator)}`,
     });
