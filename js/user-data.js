@@ -75,7 +75,7 @@ const getUniqueRandomNumb = makeUniqueRandomIntegerGenerator(ID_COMMENT.MIN, ID_
 
 const COMMENT_COUNT = {
   MIN: 1,
-  MAX: 3,
+  MAX: 7,
 };
 
 let comments = () => {
