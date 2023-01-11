@@ -37,15 +37,8 @@ body {
   background-color: #232321;
 }
 
-.page__body {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
 main {
   position: relative;
-  margin-top: auto;
 }
 
 .content-box-component {
@@ -196,8 +189,9 @@ main {
   display: -ms-grid;
   display: grid;
   grid-gap: 10px;
+
   -ms-grid-columns: (1fr)[7];
-  grid-template-columns: repeat(7, 1fr);
+      grid-template-columns: repeat(7, 1fr);
 }
 
 .picture {
@@ -328,14 +322,14 @@ main {
   top: 194px;
   left: 203px;
 
-  width: 180px;
+  width: 181px;
   height: 181px;
 
   font-size: 0;
 
   background-image: url("../img/upload-button-bg.png");
-  background: linear-gradient(#f15a5a, #9ba3ff);
-  border-radius: 35%;
+  background: linear-gradient(#e66465, #9198e5);
+  border-radius: 36%;
   background-repeat: no-repeat;
   background-position: center;
 
@@ -537,24 +531,37 @@ main {
 
 .effect-level {
   position: absolute;
-  bottom: 10px;
+  bottom: 9px;
   left: 50%;
 
+  padding: 7px 11px 0;
+
   width: 495px;
-  height: 33px;
+  height: 34px;
 
   font-size: 12px;
-  line-height: 42px;
   text-align: center;
   color: #ffffff;
   white-space: nowrap;
 
   background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 33px;
+  border-radius: 34px;
 
   -webkit-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
           transform: translateX(-50%);
+}
+
+.effect-level .noUi-target {
+  border-radius: 16px;
+}
+
+.effect-level .noUi-connects {
+  border-radius: 13px;
+}
+
+.effect-level .noUi-connect {
+  background: #ffe753;
 }
 
 .effect-level__value {
@@ -1072,7 +1079,7 @@ main {
    ========================================================================== */
 
 .page-footer {
-  margin-top: auto;
+  margin-top: 30px;
   padding-top: 30px;
   border-top: solid 1px #cccccc;
 }
