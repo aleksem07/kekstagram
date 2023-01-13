@@ -61,7 +61,7 @@
                       <input
                         type="text"
                         class="scale__control scale__control--value"
-                        value="55%"
+                        value="0%"
                         title="Image Scale"
                         name="scale"
                         readonly
@@ -71,7 +71,7 @@
 
                     <!-- Предварительный просмотр изображения -->
                     <div class="img-upload__preview">
-                      <img src="img/upload-default-image.jpg" alt="Предварительный просмотр фотографии" />
+                      <img class='none' src="img/upload-default-image.jpg" alt="Предварительный просмотр фотографии" />
                     </div>
 
                     <!-- Изменение глубины эффекта, накладываемого на изображение -->
@@ -171,8 +171,8 @@
 
                   <!-- Добавление хэш-тегов и комментария к изображению -->
                   <fieldset class="img-upload__text text">
-                    <input class="text__hashtags" name="hashtags" placeholder="#ХэшТег" />
-                    <textarea class="text__description" name="description" placeholder="Ваш комментарий..."></textarea>
+                    <input class="text__hashtags" name="hashtags" placeholder="#ХэшТег" minlength="1" maxlength="10" />
+                    <textarea class="text__description" name="description" placeholder="Ваш комментарий..." minlength=3' maxlength='80'></textarea>
                   </fieldset>
 
                   <!-- Кнопка для отправки данных на сервер -->
