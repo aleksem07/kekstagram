@@ -26,13 +26,23 @@ const showPreview = function () {
 
   const getUniqueRaindomNumb = makeUniqueRandomIntegerGenerator(0, photos.length - 1);
 
-  const displayedPhotoCount = 12;
+  const displayedPhotoCountTablet = 11;
+  const displayedPhotoCountDesctop = 12;
 
-  for (let i = 0; i < displayedPhotoCount; i++) {
-    picturesListFragment.appendChild(addPicture(photos[getUniqueRaindomNumb()]));
+  if (document.documentElement.clientWidth > 1023 && document.documentElement.clientWidth < 1360) {
+    for (let i = 0; i < displayedPhotoCountTablet; i++) {
+      picturesListFragment.appendChild(addPicture(photos[getUniqueRaindomNumb()]));
+    }
+  } else if (document.documentElement.clientWidth > 1360) {
+    for (let i = 0; i < displayedPhotoCountDesctop; i++) {
+      picturesListFragment.appendChild(addPicture(photos[getUniqueRaindomNumb()]));
+    }
+  } else {
+    for (let i = 0; i < photos.length; i++) {
+      picturesListFragment.appendChild(addPicture(photos[getUniqueRaindomNumb()]));
+    }
   }
-
   picturesList.appendChild(picturesListFragment);
 };
-
+console.log(photos.length);
 export { showPreview };

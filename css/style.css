@@ -27,6 +27,9 @@
 }
 
 body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
   font-family: "Open Sans", "Arial", sans-serif;
   font-weight: 400;
   font-size: 14px;
@@ -38,6 +41,7 @@ body {
 }
 
 main {
+  margin-block: auto;
   position: relative;
 }
 
@@ -1079,12 +1083,13 @@ main {
    ========================================================================== */
 
 .page-footer {
-  margin-top: 30px;
+  margin-top: auto;
   padding-top: 30px;
   border-top: solid 1px #cccccc;
 }
 
 .page-footer__wrapper {
+
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
