@@ -35,6 +35,7 @@
             <form
               class="img-upload__form"
               id="upload-select-image"
+              action="https://echo.htmlacademy.ru"
               method="post"
               enctype="multipart/form-data"
               autocomplete="off"
@@ -71,7 +72,7 @@
 
                     <!-- Предварительный просмотр изображения -->
                     <div class="img-upload__preview">
-                      <img class='none' src="img/upload-default-image.jpg" alt="Предварительный просмотр фотографии" />
+                      <img class="none" src="img/upload-default-image.jpg" alt="Предварительный просмотр фотографии" />
                     </div>
 
                     <!-- Изменение глубины эффекта, накладываемого на изображение -->
@@ -171,8 +172,21 @@
 
                   <!-- Добавление хэш-тегов и комментария к изображению -->
                   <fieldset class="img-upload__text text">
-                    <input class="text__hashtags" name="hashtags" placeholder="#ХэшТег" minlength="1" maxlength="10" />
-                    <textarea class="text__description" name="description" placeholder="Ваш комментарий..." minlength=3' maxlength='80'></textarea>
+                    <input
+                      type="text"
+                      minlength="2"
+                      maxlength="20"
+                      class="text__hashtags"
+                      name="hashtags"
+                      placeholder="#ХэшТег"
+                    />
+                    <textarea
+                      type="text"
+                      class="text__description"
+                      name="description"
+                      placeholder="Ваш комментарий..."
+                      maxlength="140"
+                    ></textarea>
                   </fieldset>
 
                   <!-- Кнопка для отправки данных на сервер -->
@@ -335,7 +349,7 @@
     </template>
 
     <script src="./js/main.js" type="module"></script>
-    <script src="./js/upload-photo.js" type="module"></script>
+    <!-- <script src="./js/upload-photo.js" type="module"></script> -->
     <script src="./js/nouislider.js"></script>
   </body>
 </html>
