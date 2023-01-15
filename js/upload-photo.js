@@ -1,5 +1,3 @@
-import { keyEsc } from './util.js';
-
 const ControlValue = {
   DEFAULT: 100,
   MIN: 25,
@@ -19,11 +17,9 @@ const closeModal = () => {
 imgUploadClose.addEventListener('click', () => {
   closeModal();
 });
-// if (hashtag.value.trim().length !== 0) {
-//   hashtag.value = '';}
 
 document.addEventListener('keydown', (e) => {
-  if (keyEsc) {
+  if (e.keyCode === 27) {
     closeModal();
   }
 });
@@ -34,7 +30,7 @@ const resetFilters = () => {
   image.style.transform = `scale(${ControlValue.DEFAULT}%)`;
   scaleControlSmaller.disabled = false;
   scaleControlBigger.disabled = false;
-  hashtag.value = '';
+  hashtagInput.value = '';
 };
 
 const uploadFile = document.querySelector('#upload-file');
@@ -227,31 +223,85 @@ effectsItem.forEach((effect, i) => {
 
 // hashtag & comment-----------------------------------------------------------------------------------------------------------------------------
 
+const HashtagLength = {
+  MIN: 2,
+  MAX: 20,
+};
+
+const maxHashtags = 5;
+
 const textContainer = document.querySelector('.img-upload__text');
-const hashtag = textContainer.querySelector('.text__hashtags');
-// const description = textContainer.querySelector('.text__description');
+const hashtagInput = textContainer.querySelector('.text__hashtags');
+const commentInput = textContainer.querySelector('.text__description');
 
-const MIN_LENGTH_HASHTAGS = 2;
-const MAX_LENGTH_HASHTAGS = 20;
+const space = /\s+/;
+const splitHashtags = (stringToSplit, separator) => {
+  return stringToSplit.split(separator);
+};
 
-hashtag.addEventListener('input', () => {
-  const valueLength = hashtag.value.length;
-  if (hashtag.value[0] !== '#') {
-    hashtag.setCustomValidity('Хэштег должен начинаться с символа #');
-  } else if (valueLength < MIN_LENGTH_HASHTAGS) {
-    hashtag.setCustomValidity('Введите больше символов');
-  } else if (valueLength > MAX_LENGTH_HASHTAGS) {
-    hashtag.setCustomValidity('Введите меньше символов');
-  } else {
-    hashtag.setCustomValidity('');
+hashtagInput.addEventListener('input', () => {
+  hashtagInput.setCustomValidity('');
+
+  let hashtagText = hashtagInput.value.toLowerCase().trim();
+
+  if (!hashtagText) {
+    return;
   }
 
-  hashtag.reportValidity();
+  let hashtagsArray = splitHashtags(hashtagText, space);
+
+  if (!hashtagsArray) {
+    return;
+  }
+
+  for (const tag of hashtagsArray) {
+    if (tag[0] !== '#') {
+      hashtagInput.setCustomValidity('Хэштег должен начинаться с символа #');
+    }
+    if (hashtagsArray.length > maxHashtags) {
+      hashtagInput.setCustomValidity('Нельзя указывать больше 5 хэш-тегов');
+    }
+    if (tag === '#') {
+      hashtagInput.setCustomValidity('Хеш-тег не должен состоять только из одной решётки');
+    }
+    if (tag.indexOf('#', 1) >= 1) {
+      hashtagInput.setCustomValidity('Хэш-теги должны разделяться пробелом');
+    }
+    if (hashtagText.length >= HashtagLength.MAX) {
+      hashtagInput.setCustomValidity(`Максимальная длина ${HashtagLength.MAX} символов`);
+    }
+    if (hashtagText.length < HashtagLength.MIN) {
+      hashtagInput.setCustomValidity(`Минимальная длина ${HashtagLength.MIN} символов`);
+    }
+
+    const unique = hashtagsArray.some((item, i, arr) => {
+      return arr.indexOf(item, i + 1) >= i + 1;
+    });
+
+    if (unique) {
+      hashtagInput.setCustomValidity('Хэш-теги не должны повторяться');
+    }
+  }
+
+  hashtagInput.reportValidity();
 });
 
-// публикация -----------------------------------------------------------------------------------------------------------------------------------
+// esc hashtag &comment----------------------------------------------------------------------------------------------------------
+const onEscapeHashtag = (e) => {
+  if (e.key === 'Escape' || e.key === 'Esc') {
+    hashtagInput.value = '';
+    e.preventDefault();
+    e.stopPropagation();
+  }
+};
 
-const submitCommentButton = imgUploadContainer.querySelector('#upload-submit');
-submitCommentButton.addEventListener('click', () => {
-  document.querySelector('#upload-select-image').submit();
-});
+const onEscapeComment = (e) => {
+  if (e.key === 'Escape' || e.key === 'Esc') {
+    commentInput.value = '';
+    e.preventDefault();
+    e.stopPropagation();
+  }
+};
+
+hashtagInput.addEventListener('keydown', onEscapeHashtag);
+commentInput.addEventListener('keydown', onEscapeComment);

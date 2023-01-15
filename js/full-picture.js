@@ -1,5 +1,4 @@
 import { renderComments, removeCommentItem } from './comment.js';
-import { keyEsc } from './util.js';
 
 const bigPicture = document.querySelector('.big-picture');
 const bigPictureCloseButton = bigPicture.querySelector('.big-picture__cancel');
@@ -31,7 +30,7 @@ const closeBigPicture = () => {
 bigPictureCloseButton.addEventListener('click', closeBigPicture);
 
 document.addEventListener('keydown', (e) => {
-  if (keyEsc) {
+  if (e.keyCode === 27) {
     closeBigPicture();
   }
 });

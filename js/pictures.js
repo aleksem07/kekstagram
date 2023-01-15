@@ -44,5 +44,5 @@ const showPreview = function () {
   }
   picturesList.appendChild(picturesListFragment);
 };
-console.log(photos.length);
+
 export { showPreview };

@@ -42,16 +42,4 @@ const checksStringLength = (string, maxLenght) => {
 
 checksStringLength('Строка', 140);
 
-// keyCode
-
-const Keys = {
-  ESC: 'Esc',
-  ESCAPE: 'Escape',
-  NUM_ESC: 27,
-};
-
-const keyEsc = () => {
-  e.keyCode === Keys.NUM_ESC || e.key === Keys.ESC || e.key === Keys.ESCAPE;
-};
-
-export { getRandomNumber, getRandomNumberArray, makeUniqueRandomIntegerGenerator, keyEsc };
+export { getRandomNumber, getRandomNumberArray, makeUniqueRandomIntegerGenerator };
