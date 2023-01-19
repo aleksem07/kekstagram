@@ -305,3 +305,13 @@ const onEscapeComment = (e) => {
 
 hashtagInput.addEventListener('keydown', onEscapeHashtag);
 commentInput.addEventListener('keydown', onEscapeComment);
+
+// send photo----------------------------------------------------------------------------------
+
+const formSendButton = document.querySelector('.img-upload__form');
+
+formSendButton.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+});
+
+console.log(formSendButton);
