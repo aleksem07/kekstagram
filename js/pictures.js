@@ -1,6 +1,4 @@
-import { photos } from './user-data.js';
 import { openBigPicture } from './full-picture.js';
-import { makeUniqueRandomIntegerGenerator } from './util.js';
 
 const picturesList = document.querySelector('.pictures');
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
@@ -21,27 +19,13 @@ const addPicture = (item) => {
   return pictureAdd;
 };
 
-const showPreview = function () {
+const showPreview = (dataFetch) => {
   let picturesListFragment = document.createDocumentFragment();
 
-  const getUniqueRaindomNumb = makeUniqueRandomIntegerGenerator(0, photos.length - 1);
+  dataFetch.forEach((photo) => {
+    picturesListFragment.appendChild(addPicture(photo));
+  });
 
-  const displayedPhotoCountTablet = 11;
-  const displayedPhotoCountDesctop = 12;
-
-  if (document.documentElement.clientWidth > 1023 && document.documentElement.clientWidth < 1360) {
-    for (let i = 0; i < displayedPhotoCountTablet; i++) {
-      picturesListFragment.appendChild(addPicture(photos[getUniqueRaindomNumb()]));
-    }
-  } else if (document.documentElement.clientWidth > 1360) {
-    for (let i = 0; i < displayedPhotoCountDesctop; i++) {
-      picturesListFragment.appendChild(addPicture(photos[getUniqueRaindomNumb()]));
-    }
-  } else {
-    for (let i = 0; i < photos.length; i++) {
-      picturesListFragment.appendChild(addPicture(photos[getUniqueRaindomNumb()]));
-    }
-  }
   picturesList.appendChild(picturesListFragment);
 };
 

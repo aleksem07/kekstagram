@@ -1,3 +1,6 @@
+import { request } from './fetch.js';
+import { showSuccess, showError } from './alerts.js';
+
 const ControlValue = {
   DEFAULT: 100,
   MIN: 25,
@@ -286,7 +289,7 @@ hashtagInput.addEventListener('input', () => {
   hashtagInput.reportValidity();
 });
 
-// esc hashtag &comment----------------------------------------------------------------------------------------------------------
+// esc hashtag & comment----------------------------------------------------------------------------------------------------------
 const onEscapeHashtag = (e) => {
   if (e.key === 'Escape' || e.key === 'Esc') {
     hashtagInput.value = '';
@@ -305,3 +308,23 @@ const onEscapeComment = (e) => {
 
 hashtagInput.addEventListener('keydown', onEscapeHashtag);
 commentInput.addEventListener('keydown', onEscapeComment);
+
+// send photo----------------------------------------------------------------------------------
+const formSendButton = document.querySelector('.img-upload__form');
+
+const onSuccess = () => {
+  showSuccess('Изображение успешно загружено');
+  closeModal();
+  formSendButton.reset();
+};
+
+const onError = () => {
+  closeModal();
+  showError('Что-то пошло не так');
+};
+
+formSendButton.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+
+  request(onSuccess, onError, 'POST', new FormData(evt.target));
+});
