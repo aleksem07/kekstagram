@@ -36,6 +36,10 @@ const showError = (text) => {
   errorButton.addEventListener('click', () => {
     removeAlert('.error');
   });
+
+  setTimeout(() => {
+    removeAlert('.error');
+  }, 3000);
 };
 
 export { showSuccess, showError };
