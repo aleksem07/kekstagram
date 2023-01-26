@@ -18,6 +18,10 @@ const showSuccess = (text) => {
   successButton.addEventListener('click', () => {
     removeAlert('.success');
   });
+
+  setTimeout(() => {
+    removeAlert('.success');
+  }, 5000);
 };
 
 const errorTemplate = document.querySelector('#error').content;
