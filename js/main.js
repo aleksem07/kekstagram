@@ -1,4 +1,5 @@
 import './upload-photo.js';
+import './upload-preview.js';
 import { request } from './fetch.js';
 import { showPreview } from './pictures.js';
 import { showError } from './alerts.js';

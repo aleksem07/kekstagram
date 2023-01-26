@@ -27,8 +27,13 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
+const preview = document.querySelector('.img-upload__preview img');
+
 const resetFilters = () => {
   ControlValue.DEFAULT = 100;
+  preview.attributes[0].nodeValue = 'none';
+  preview.attributes.style.nodeValue = '';
+  sliderContainer.classList.add('hidden');
   scaleControlValue.attributes[2].textContent = `${ControlValue.DEFAULT}%`;
   image.style.transform = `scale(${ControlValue.DEFAULT}%)`;
   scaleControlSmaller.disabled = false;
@@ -43,9 +48,6 @@ uploadFile.addEventListener('change', () => {
   document.body.classList.add('modal-open');
   resetFilters();
 });
-
-// imgUploadContainer.classList.remove('hidden');
-// document.body.classList.add('modal-open');
 
 const scaleControlContainer = document.querySelector('.img-upload__scale');
 const scaleControlSmaller = scaleControlContainer.querySelector('.scale__control--smaller');
