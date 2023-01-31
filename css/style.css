@@ -156,9 +156,8 @@ main {
 
 .img-filters__button:active,
 .img-filters__button--active {
-  color: #ff4e4e;
-
-  background-color: #ffffff;
+    color: #ffffff;
+    background-color: #da6973;
   border-radius: 2px;
 }
 

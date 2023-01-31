@@ -1,12 +1,9 @@
 import './upload-photo.js';
 import './upload-preview.js';
-import { request } from './fetch.js';
-import { showPreview } from './pictures.js';
+import './view-filter.js';
+import { onSuccess } from './view-filter.js';
 import { showError } from './alerts.js';
-
-const onSuccess = (data) => {
-  showPreview(data.slice());
-};
+import { request } from './fetch.js';
 
 const onError = () => {
   showError('Ошибка загрузки, попробуйте позже');

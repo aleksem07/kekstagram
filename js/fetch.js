@@ -3,6 +3,8 @@ const URLs = {
   POST: 'https://23.javascript.pages.academy/kekstagram',
 };
 
+const filterContainer = document.querySelector('.img-filters');
+
 const request = (onSuccess, onError, method, data) => {
   fetch(URLs[method], {
     method: method,
@@ -12,6 +14,7 @@ const request = (onSuccess, onError, method, data) => {
     .then((json) => {
       onSuccess(json);
     })
+    .then(() => filterContainer.classList.remove('img-filters--inactive'))
 
     .catch(() => {
       onError();

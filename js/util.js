@@ -34,12 +34,4 @@ const makeUniqueRandomIntegerGenerator = (min, max) => {
   };
 };
 
-//проверка длины строки
-
-const checksStringLength = (string, maxLenght) => {
-  return string.length <= maxLenght;
-};
-
-checksStringLength('Строка', 140);
-
-export { getRandomNumber, getRandomNumberArray, makeUniqueRandomIntegerGenerator };
+export { getRandomNumber, getRandomNumberArray, makeUniqueRandomIntegerGenerator, debounce };
