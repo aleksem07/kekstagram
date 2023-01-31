@@ -13,4 +13,5 @@ extends:
 
 globals: {
   noUiSlider: true
+  _:readonly
 }
