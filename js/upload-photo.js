@@ -21,8 +21,14 @@ imgUploadClose.addEventListener('click', () => {
   closeModal();
 });
 
-document.addEventListener('keydown', (e) => {
-  if (e.keyCode === 27) {
+document.addEventListener('click', (evt) => {
+  if (evt.target.classList.contains('img-upload__overlay')) {
+    closeModal();
+  }
+});
+
+document.addEventListener('keydown', (evt) => {
+  if (evt.keyCode === 27) {
     closeModal();
   }
 });

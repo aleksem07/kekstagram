@@ -29,8 +29,14 @@ const closeBigPicture = () => {
 
 bigPictureCloseButton.addEventListener('click', closeBigPicture);
 
-document.addEventListener('keydown', (e) => {
-  if (e.keyCode === 27) {
+document.addEventListener('click', (evt) => {
+  if (evt.target.classList.contains('overlay')) {
+    closeBigPicture();
+  }
+});
+
+document.addEventListener('keydown', (evt) => {
+  if (evt.keyCode === 27) {
     closeBigPicture();
   }
 });
